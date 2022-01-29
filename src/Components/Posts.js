@@ -21,19 +21,20 @@ const Posts = () => {
         // console.log(`Hello I am a ${p.fields.postImage.description}`)
         // console.log(p.sys.id)
         return (
-          <article key={p.sys.id} id={p.sys.id}>
-            <h4>{p.fields.teaser}</h4>
-            <h1><Link to={`/posts/${p.fields.title}`}>{p.fields.title}</Link></h1>
+          <article key={p.id} id={p.id}>
+            <h4>{p.teaser}</h4>
+            <h1><Link to={`/posts/${p.title}`}>{p.title}</Link></h1>
             <p>{month} {day}, {year}</p>
             <span>
-            <img
-              src={p.fields.postImage.fields.file.url}
-              alt="here"
-              width="400"
-            />
-            <a className="imagecredits" href={p.fields.postImage.fields.description} target="_blank" rel="noreferrer">©{p.fields.postImage.fields.title}</a>
+              <img
+                src={p.img}
+                alt="here"
+                width="400"
+                className="postimg"
+              />
+              <a className="imagecredits" href={p.imagecreditURL} target="_blank" rel="noreferrer">©{p.imagecredit}</a>
             </span>
-            {documentToReactComponents(p.fields.postTextcontent, {
+            {documentToReactComponents(p.text, {
               renderNode: {
                 [BLOCKS.PARAGRAPH]: (node, children) => {
                   return <p>{children}</p>;
@@ -68,7 +69,7 @@ const Posts = () => {
                   .flat();
               }
             })}
-            <p>
+            <p key={p.id}>
               <em>
                 {p.metadata.tags.map((t, index) => (
                   <span key={index} className="tags">{t.sys.id}</span>

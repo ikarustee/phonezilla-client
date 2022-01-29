@@ -59,3 +59,9 @@
   border: 2px blue solid;
   bottom: 4px;
 }
+img.postimg {
+  width:100%;
+}
+a.imagecredits {
+  display: block;
+}

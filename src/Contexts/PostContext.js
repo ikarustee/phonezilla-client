@@ -30,7 +30,22 @@ const PostContextProvider = ({children}) => {
 
     useEffect(() => {
         getPosts()
-        .then((res) => setPosts(res.items));
+        .then((res) => {
+          const items = res.items
+          const articles = items.map((p) => {
+            return{
+            ...p,
+            teaser: p.fields.teaser,
+            title: p.fields.title,
+            img: p.fields.postImage.fields.file.url,
+            imagecreditURL: p.fields.postImage.fields.description,
+            imagecredit: p.fields.postImage.fields.title,
+            text: p.fields.postTextcontent,
+            id: p.sys.id
+            };
+          });
+          setPosts(articles)
+        });
       }, []);
     
       useEffect(() => {

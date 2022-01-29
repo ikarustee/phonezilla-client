@@ -10,15 +10,15 @@ const Posts = ({articles}) => {
     const {id} = useParams()
 
 
-    const thisPost = articles && articles.find((a) => a.fields.title === id)
+    const thisPost = articles && articles.find((a) => a.title === id)
     // const thisPost = articles && articles.find((a) => a.sys.id === id)
-    console.log(thisPost.fields.title)
+    // console.log(thisPost.title)
 
     
   return (
     <div>
-    <h4>{thisPost.fields.teaser}</h4>  
-    <h2>Article ID {thisPost.fields.title}</h2>  
+    <h4>{thisPost.teaser}</h4>  
+    <h2>Article ID {thisPost.title}</h2>  
     <Link to="/posts/">back to posts</Link>
     </div>
   );
