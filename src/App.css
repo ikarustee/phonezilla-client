@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -35,4 +35,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.tags {
+  padding: 8px;
+  background-color: darkorchid;
+  border-radius: 4px;
+  color: white;
+  margin-right: 8px;
+  position: relative;
+  transition: all 300ms ease-in;
+  -webkit-transition: all 300ms ease-in;
+  border: 2px transparent solid;
+  bottom: 0;
+}
+.tags:hover {
+  border: 2px blue solid;
+  bottom: 4px;
 }
