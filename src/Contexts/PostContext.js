@@ -26,13 +26,15 @@ const config = {
 
 const PostContextProvider = ({children}) => {
     const [posts, setPosts] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getPosts().then((res) => setPosts(res.items));
+        getPosts()
+        .then((res) => setPosts(res.items));
       }, []);
     
       useEffect(() => {
-        posts.length && console.log(posts);
+        if(posts.length) return setIsLoading(false);
       }, [posts]);
 
   return (

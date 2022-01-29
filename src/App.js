@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from "react";
 import Posts from "./Components/Posts"
 import { Routes, Route } from 'react-router-dom';
 import { PostContext } from "./Contexts/PostContext";
+import Home from "./Components/Home";
+import SinglePost from "./Components/SinglePost"
 
 /*
         const date = new Date(p.sys.createdAt)
@@ -15,6 +17,7 @@ import { PostContext } from "./Contexts/PostContext";
 
 export default function App() {
   const {post} = useContext(PostContext)
+  // console.log(post)
   // const [posts, setPosts] = useState([]);
 
   // const {post} = useContext(PostContext)
@@ -24,14 +27,15 @@ export default function App() {
   // }, []);
 
   // useEffect(() => {
-  //   posts.length && console.log(posts);
-  // }, [posts]);
+  //   post.length && console.log(post);
+  // }, [post]);
+
   return (
     <div className="App">
-      <h2>Hello world.</h2>
       <Routes>
+        <Route exact path="/" element={<Home />}></Route>
         <Route path="/posts/" element={<Posts />}></Route>
-        {/* <Route path="/posts/:id" element={<SinglePost key={post.sys.id} />}></Route> */}
+        <Route path="/posts/:id" element={<SinglePost articles={post}/>}></Route>
       </Routes>
     </div>
   );
