@@ -1,4 +1,5 @@
 import "./App.css";
+import "../src/fonts/fonts.css"
 import { useState, useEffect, useContext } from "react";
 import Posts from "./Components/Posts"
 import { Routes, Route } from 'react-router-dom';

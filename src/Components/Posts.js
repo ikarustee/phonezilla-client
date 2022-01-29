@@ -23,7 +23,7 @@ const Posts = () => {
         return (
           <article key={p.id} id={p.id}>
             <h4>{p.teaser}</h4>
-            <h1><Link to={`/posts/${p.title}`}>{p.title}</Link></h1>
+            <h2><Link to={`/posts/${p.title}`}>{p.title}</Link></h2>
             <p>{month} {day}, {year}</p>
             <span>
               <img
@@ -38,6 +38,9 @@ const Posts = () => {
               renderNode: {
                 [BLOCKS.PARAGRAPH]: (node, children) => {
                   return <p>{children}</p>;
+                },
+                [BLOCKS.HEADING_2]: (node, children) => {
+                  return <h2>{children}</h2>;
                 },
                 [BLOCKS.HEADING_3]: (node, children) => {
                   return <h3>{children}</h3>;
@@ -69,7 +72,7 @@ const Posts = () => {
                   .flat();
               }
             })}
-            <p key={p.id}>
+            <p>
               <em>
                 {p.metadata.tags.map((t, index) => (
                   <span key={index} className="tags">{t.sys.id}</span>
