@@ -7,6 +7,9 @@ import { PostContext } from "./Contexts/PostContext";
 import Home from "./Components/Home";
 import SinglePost from "./Components/SinglePost"
 
+const slugify = require('slugify')
+slugify('20%')
+
 /*
         const date = new Date(p.sys.createdAt)
         date.toISOString().substring(0, 10);

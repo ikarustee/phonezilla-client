@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PostContext } from "../Contexts/PostContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 import { Button } from "antd";
 
 const Posts = () => {
@@ -23,7 +22,7 @@ const Posts = () => {
         return (
           <article key={p.id} id={p.id}>
             <h4>{p.teaser}</h4>
-            <h2><Link to={`/posts/${p.title}`}>{p.title}</Link></h2>
+            <h2><Link to={`/posts/${p.title.toLowerCase().split(/[ ']/).join('-')}`}>{p.title}</Link></h2>
             <p>{month} {day}, {year}</p>
             <span>
               <img
@@ -34,44 +33,7 @@ const Posts = () => {
               />
               <a className="imagecredits" href={p.imagecreditURL} target="_blank" rel="noreferrer">©{p.imagecredit}</a>
             </span>
-            {documentToReactComponents(p.text, {
-              renderNode: {
-                [BLOCKS.PARAGRAPH]: (node, children) => {
-                  return <p>{children}</p>;
-                },
-                [BLOCKS.HEADING_2]: (node, children) => {
-                  return <h2>{children}</h2>;
-                },
-                [BLOCKS.HEADING_3]: (node, children) => {
-                  return <h3>{children}</h3>;
-                },
-                [BLOCKS.UL_LIST]: (node, children) => {
-                  return <ul>{children}</ul>;
-                },
-                [INLINES.HYPERLINK]: (node, children) => {
-                  // console.log(node);
-                  return (
-                    <a
-                      className="link"
-                      target="_blank"
-                      rel="noreferrer"
-                      href={node.data.uri}
-                    >
-                      {children}
-                    </a>
-                  );
-                }
-              },
-              renderMark: {
-                [MARKS.CODE]: (text) => <code className="red">{text}</code>
-              },
-              renderText: (text) => {
-                return text
-                  .split("\n")
-                  .map((i) => [i, <br />])
-                  .flat();
-              }
-            })}
+            {documentToReactComponents(p.text)}
             <p>
               <em>
                 {p.metadata.tags.map((t, index) => (
