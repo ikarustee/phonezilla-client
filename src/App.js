@@ -4,11 +4,10 @@ import { useState, useEffect, useContext } from "react";
 import Posts from "./Components/Posts"
 import { Routes, Route } from 'react-router-dom';
 import { PostContext } from "./Contexts/PostContext";
+import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import SinglePost from "./Components/SinglePost"
 
-const slugify = require('slugify')
-slugify('20%')
 
 /*
         const date = new Date(p.sys.createdAt)
@@ -36,6 +35,7 @@ export default function App() {
 
   return (
     <div className="App">
+    <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/posts/" element={<Posts />}></Route>

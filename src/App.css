@@ -43,7 +43,16 @@
   }
 }
 
-
+nav ul li {
+  display: inline;
+  padding: 8px 16px;
+}
+nav ul li:first-of-type{
+  padding-left:0;
+}
+a.active {
+  color: red;
+}
 .tags {
   padding: 8px;
   background-color: darkorchid;
