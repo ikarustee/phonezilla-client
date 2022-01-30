@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "../src/fonts/fonts.css"
+import { useState, useEffect, useContext } from "react";
+import Posts from "./Components/Posts"
+import { Routes, Route } from 'react-router-dom';
+import { PostContext } from "./Contexts/PostContext";
+import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
+import SinglePost from "./Components/SinglePost"
 
-function App() {
+
+/*
+        const date = new Date(p.sys.createdAt)
+        date.toISOString().substring(0, 10);
+*/
+
+// let time = new Date("2010-01-13T18:31:16Z");
+// let month = time.toLocaleString("en-EN", { month: "long" });
+// console.log(month)
+
+export default function App() {
+  const {post} = useContext(PostContext)
+  // console.log(post)
+  // const [posts, setPosts] = useState([]);
+
+  // const {post} = useContext(PostContext)
+
+  // useEffect(() => {
+  //   getArticles().then((res) => setPosts(res.items));
+  // }, []);
+
+  // useEffect(() => {
+  //   post.length && console.log(post);
+  // }, [post]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route path="/posts/" element={<Posts />}></Route>
+        <Route path="/posts/:id" element={<SinglePost articles={post}/>}></Route>
+      </Routes>
     </div>
   );
 }
-
-export default App;
