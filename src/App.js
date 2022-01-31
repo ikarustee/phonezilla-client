@@ -36,11 +36,13 @@ export default function App() {
   return (
     <div className="App">
     <Navbar />
+    <main>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/posts/" element={<Posts />}></Route>
-        <Route path="/posts/:id" element={<SinglePost articles={post}/>}></Route>
+        <Route path="/posts/:id" element={<SinglePost articles={post} key={post.map((p) => p.id)}/>}></Route>
       </Routes>
+    </main>
     </div>
   );
 }
