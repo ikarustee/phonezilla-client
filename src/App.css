@@ -42,7 +42,9 @@
     transform: rotate(360deg);
   }
 }
-
+nav ul {
+  padding-inline-start: 0;
+}
 nav ul li {
   display: inline;
   padding: 8px 16px;
@@ -52,6 +54,12 @@ nav ul li:first-of-type{
 }
 a.active {
   color: red;
+}
+article ul ul {
+  padding-left: 1em;
+}
+article ul ul li::marker {
+  content: '– ';
 }
 .tags {
   padding: 8px;
