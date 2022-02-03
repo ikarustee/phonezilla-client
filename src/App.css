@@ -12,9 +12,7 @@
     0.3px 36.2px 54.3px hsl(var(--shadow-color) / 0.26);
 }
 .App {
-  text-align: left;
   width: 100%;
-  max-width: 1200px;
   margin:0 auto;
   padding:0;
   box-sizing: border-box;
@@ -54,6 +52,22 @@
     transform: rotate(360deg);
   }
 }
+
+.nav {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  height:50px;
+  z-index: 2;
+}
+.nav ul {
+  position: absolute;
+}
+.nav ul.ant-menu {
+  background: transparent;
+  border-bottom: 0;
+}
 nav ul {
   padding-inline-start: 0;
 }
@@ -64,10 +78,26 @@ nav ul li {
 nav ul li:first-of-type{
   padding-left:0;
 }
+header {
+  height: 40vh;
+  position: relative;
+  margin-top:-50px;
+  z-index: 1;
+  /* margin-bottom: 1em; */
+}
+header .hero img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
 a.active {
   color: red;
 }
 main {
+  text-align: left;
+  width: 100%;
+  max-width: 1200px;
+  margin:0 auto;
   padding:1em;
   box-sizing: border-box;
 }

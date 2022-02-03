@@ -7,10 +7,12 @@ import { PostContext } from '../Contexts/PostContext';
 const Navbar = () => {
 
   return (
-    <Menu theme="default" mode="horizontal" defaultSelectedKeys={['1']} breakpoint="md" trigger={null}>
-        <Menu.Item key={0}><NavLink to="/">Home</NavLink></Menu.Item>
-        <Menu.Item key={1}><NavLink to="/posts/">Posts</NavLink></Menu.Item>
-    </Menu>
+    <div className="nav">
+      <Menu theme="default" mode="horizontal" defaultSelectedKeys={['0']} breakpoint="md" trigger={null}>
+          <Menu.Item key={0}><NavLink to="/">Home</NavLink></Menu.Item>
+          <Menu.Item key={1}><NavLink to="/posts/">Posts</NavLink></Menu.Item>
+      </Menu>
+    </div>
   );
 };
 

@@ -4,14 +4,16 @@ import { Row, Col, Card } from "antd";
 import { PostContext } from '../Contexts/PostContext';
 import Hero from "../nordwood-themes-q8U1YgBaRQk-unsplash_cropped.jpeg"
 
+
 const Home = () => {
   const {post} = useContext(PostContext)
   // const [spliceCount, setSpliceCount] = useState([0,3])
   return (
       <>
-        <Row>
-          <div style={{marginBottom: '1em'}}><img src={Hero} alt="hero" style={{width: '100%'}}/></div>
-        </Row>
+      <header>
+        <div className="hero" style={{marginBottom: '1em'}}><img src={Hero} alt="hero"/></div>
+      </header>
+      <main>
         <Row gutter={[16, 16]}>
         {post.map((p) => {
           return (
@@ -33,6 +35,7 @@ const Home = () => {
         .splice(0,3)
         }
       </Row>
+      </main>
       </>
   );
 };
