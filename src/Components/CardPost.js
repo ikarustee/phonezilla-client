@@ -12,13 +12,14 @@ const CardPost = ({p}) => {
       <Col key={p.id} span={8} xs={12} sm={12} md={12} lg={8} xl={8}>
       <Link to={`/posts/${p.title.toLowerCase().split(/[ ']/).join('-')}`}>
         <Card 
-        className="card__home"
+        className="card"
         key={p.id} 
         hoverable
         cover={<img src={p.img} alt="here" width="400" className="card__cover__img"/>}
         >
-        <span>{p.teaser}</span>
-        <span>{p.title}</span>
+        <span className="card__body teaser">{p.teaser}</span>
+        <span className="card__body title">{p.title}</span>
+        <button className="card__body" >Read more</button>
         </Card>
       </Link>
     </Col>
