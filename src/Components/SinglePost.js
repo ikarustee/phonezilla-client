@@ -14,11 +14,11 @@ const Posts = ({articles}) => {
 
     
   return (
-    <div>
+    <main>
     <h4>{thisPost.teaser}</h4>  
     <h2>Article ID {thisPost.title}</h2>  
     <Link to="/posts/">back to posts</Link>
-    </div>
+    </main>
   );
 };
 

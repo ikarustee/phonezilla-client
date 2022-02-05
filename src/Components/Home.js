@@ -1,19 +1,42 @@
-import React from 'react';
-import { Row, Col } from "antd";
+import React, {useContext} from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col, Card } from "antd";
+import { PostContext } from '../Contexts/PostContext';
+import Hero from "./Hero"
+// import Hero from "../nordwood-themes-q8U1YgBaRQk-unsplash_cropped.jpeg"
+
 
 const Home = () => {
+  const {post} = useContext(PostContext)
+  // const {hero} = useContext(HeroContext)
+  // const [spliceCount, setSpliceCount] = useState([0,3])
   return (
       <>
-        <Row>
-            <Col span={12}>Hello</Col>
+      <Hero />
+      <main>
+      <h1>Welcome to phoneZILLA</h1>
+        <Row gutter={[16, 16]}>
+          {post.map((p) => {
+            return (
+              <Col key={p.id} span={8} xs={12} sm={12} md={12} lg={8} xl={8}>
+                <Link to={`/posts/${p.title.toLowerCase().split(/[ ']/).join('-')}`}>
+                  <Card 
+                  className="card__home"
+                  key={p.id} 
+                  hoverable
+                  cover={<img src={p.img} alt="here" width="400" className="card__cover__img"/>}
+                  >
+                  <span>{p.teaser}</span>
+                  <span>{p.title}</span>
+                  </Card>
+                </Link>
+              </Col>
+            );
+          })
+          .splice(0,3)
+          }
         </Row>
-        <Row
-        style={{justifyContent: 'center'}}
-        >
-            <Col xs={12} sm={3} md={2} lg={8} >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies</Col>
-            <Col xs={6} sm={6} md={8} lg={8} >perdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, c</Col>
-            <Col xs={6} sm={3} md={2} lg={8} > Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc</Col>
-        </Row>
+      </main>
       </>
   );
 };
