@@ -44,9 +44,10 @@ const PostContextProvider = ({children}) => {
             text: p.fields.postTextcontent,
             id: p.sys.id
             };
-          });
+          })
           setPosts(articles)
-        });
+        })
+        .catch((error) => console.log(error))
       }, []);
     
       useEffect(() => {
