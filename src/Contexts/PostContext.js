@@ -1,17 +1,18 @@
 import React, {createContext, useState, useEffect} from "react"
-import { createClient } from "contentful";
+// import { createClient } from "contentful";
+import client from "../Components/client"
 
-// Main configuration
-const config = {
-  spaceID: process.env.REACT_APP_SPACEID,
-  deliveryToken: process.env.REACT_APP_DELIVERYTOKEN
-};
+// // Main configuration
+// const config = {
+//   spaceID: process.env.REACT_APP_SPACEID,
+//   deliveryToken: process.env.REACT_APP_DELIVERYTOKEN
+// };
 
-// Create client
-const client = createClient({
-  space: config.spaceID,
-  accessToken: config.deliveryToken
-});
+// // Create client
+// const client = createClient({
+//   space: config.spaceID,
+//   accessToken: config.deliveryToken
+// });
   
 export const getPosts = () => {
   // Retrieve all entries of a space
