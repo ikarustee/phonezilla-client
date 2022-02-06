@@ -98,7 +98,7 @@ header.hero img {
   object-fit: cover;
 }
 h2.hero__heading  {
-  font-size: 80px;
+  font-size: 60px;
   line-height: 1;
   color: white;
   flex-basis: 100%;
@@ -108,8 +108,8 @@ h2.hero__heading  {
 }
 h2.hero__heading span {
   background-image: linear-gradient(45deg, #B627C1, #B627C1);
-  background-size: auto 50px;
-  background-position: 0 56px;
+  background-size: auto 70px;
+  background-position: 0 6px;
   background-repeat: repeat-x;
 }
 a.active {
@@ -138,6 +138,13 @@ article ul ul li::marker {
   align-content: center;
   align-items: flex-end;
   align-self: center;
+  justify-content: center;
+}
+.ant-card-hoverable.card__home {
+  height: 240px;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 8px;
 }
 .ant-card-hoverable {
   box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
@@ -148,7 +155,12 @@ article ul ul li::marker {
 }
 .ant-card-cover  {
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* transform: scale(1.13); */
+}
+.ant-card-hoverable.card__home > div > img {
+  height: 240px;
+  width: auto;
 }
 .ant-card-cover > img{
   transition: all 300ms ease-in;
