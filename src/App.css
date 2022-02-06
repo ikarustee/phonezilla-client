@@ -153,6 +153,10 @@ article ul ul li::marker {
 .ant-card-hoverable {
   box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
   border-radius: 8px;
+  cursor:default;
+}
+button.card__body.button:hover {
+  color: red;
 }
 .ant-card-hoverable:hover {
   box-shadow: var(--shadow-elevation-medium);
@@ -177,6 +181,7 @@ article ul ul li::marker {
 .ant-card-body {
   padding: 22px 16px 2em;
   cursor: default;
+  /* pointer-events: none; */
 /*   display: flex;
   flex-wrap: wrap;
   border-radius: 0 0 8px 8px;
@@ -206,6 +211,7 @@ article ul ul li::marker {
 }
 span.card__body.teaser,
 span.card__body.title {
+  cursor: pointer;
   display: inline-block;
   width: 100%;
   min-height: 1px;
@@ -213,7 +219,6 @@ span.card__body.title {
 }
 span.card__body.teaser:hover,
 span.card__body.title:hover {
-  cursor: pointer;
   color:#1890ff;
 } 
 .ant-card-body span:nth-child(2) {

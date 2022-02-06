@@ -36,7 +36,6 @@ const Hero = () => {
             })
             setHeroScene(slides[0])
             console.log(slides)
-            console.log(heroScene.image)
           })
         } catch (err) {
           console.log(err)
@@ -47,11 +46,12 @@ const Hero = () => {
       
       useEffect(() => {
         if(heroScene?.image) return setIsLoading(false);
+        console.log(heroScene.image)
       }, [heroScene]);
     
   return (
     <header className="hero" style={{marginBottom: '1em'}}>
-      <img src={heroScene.image} alt="gasdf" loading="lazy"/>
+      <img src={heroScene.image} alt="" loading="lazy"/>
       <h2 className="hero__heading">{heroScene.heading}</h2>
       {/* {heroScene.map((h) => (
         <>

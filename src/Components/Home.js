@@ -17,9 +17,9 @@ const Home = () => {
       <main>
       <h1>Welcome to phoneZILLA</h1>
         <Row gutter={[16, 16]}>
-          {post.map((p) => {
+          {post.map((p, index) => {
             return (
-              <CardPost p={p}/>
+              <CardPost p={p} key={index}/>
             );
           })
           .splice(0,3)
