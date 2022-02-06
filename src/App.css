@@ -11,6 +11,9 @@
     0.1px 11.6px 17.4px hsl(var(--shadow-color) / 0.13),
     0.3px 36.2px 54.3px hsl(var(--shadow-color) / 0.26);
 }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 .App {
   width: 100%;
   margin:0 auto;
@@ -172,7 +175,7 @@ article ul ul li::marker {
   transform:scale(1.1)
 }
 .ant-card-body {
-  padding: 12px 8px 8px;
+  padding: 22px 16px 2em;
   cursor: default;
 /*   display: flex;
   flex-wrap: wrap;
@@ -210,6 +213,9 @@ span.card__body.title {
 .ant-card-body span:nth-child(2) {
   font-size:18px;
 }
+button.card__body {
+  display: block;
+}
 .tags {
   padding: 8px;
   background-color: darkorchid;
@@ -235,7 +241,7 @@ a.imagecredits {
 
 @media screen and (min-width:768px) {
   .card {
-    min-height: 300px;
+    min-height: 380px;
   }
 
   .ant-card-cover  {
