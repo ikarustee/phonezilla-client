@@ -11,8 +11,8 @@ export const getHeros = () => {
   // Retrieve all entries of a space
   return client.getEntries({
     content_type: "hero",
-    order: "sys.createdAt"
-    // Order entries by date desc
+    order: "-sys.createdAt"
+    // Order entries by date ascending (-)
   });
 };
   
@@ -35,6 +35,7 @@ const Hero = () => {
               }
             })
             setHeroScene(slides[0])
+            console.log(slides)
           });
         } catch (err) {
           console.log(err)
@@ -43,7 +44,6 @@ const Hero = () => {
       } 
       , []);
       
-      console.log(heroScene)
       useEffect(() => {
         if(heroScene.length) return setIsLoading(false);
       }, [heroScene]);
