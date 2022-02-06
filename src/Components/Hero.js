@@ -36,22 +36,22 @@ const Hero = () => {
             })
             setHeroScene(slides[0])
             console.log(slides)
-          });
+          })
         } catch (err) {
           console.log(err)
-        }
-      }; getHeroScenes() 
+        }};
+        getHeroScenes() 
       } 
       , []);
       
       useEffect(() => {
-        if(heroScene.length) return setIsLoading(false);
+        if(heroScene?.image) return setIsLoading(false);
       }, [heroScene]);
-      
+    
   return (
     <header className="hero" style={{marginBottom: '1em'}}>
-    <img src={heroScene.image} alt="gasdf" />
-    <h2 className="hero__heading">{heroScene.heading}</h2>
+      <img src={heroScene.image} alt="gasdf" loading="lazy"/>
+      <h2 className="hero__heading">{heroScene.heading}</h2>
       {/* {heroScene.map((h) => (
         <>
           <img src={h.image} alt="hero"/>

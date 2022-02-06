@@ -1,17 +1,22 @@
-import React, {useContext} from 'react';
+import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import {Menu} from "antd"
 import { PostContext } from '../Contexts/PostContext';
 
 
 const Navbar = () => {
+  const [currentPage, setCurrentPage] = useState("home")
+
+  const handleClick = (e) => {
+    setCurrentPage({ current: e.key });
+  }
 
   return (
     <nav>
       <div className="nav">
         <Menu theme="default" mode="horizontal" defaultSelectedKeys={['0']} breakpoint="md" trigger={null}>
-            <Menu.Item key={0}><NavLink to="/">Home</NavLink></Menu.Item>
-            <Menu.Item key={1}><NavLink to="/posts/">Posts</NavLink></Menu.Item>
+            <Menu.Item key="home" onClick={handleClick}><NavLink to="/">Home</NavLink></Menu.Item>
+            <Menu.Item key="posts"><NavLink to="/posts/">Posts</NavLink></Menu.Item>
         </Menu>
       </div>
     </nav>

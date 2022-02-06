@@ -209,7 +209,13 @@ span.card__body.title {
   display: inline-block;
   width: 100%;
   min-height: 1px;
+  transition: all 300ms ease-in;
 }
+span.card__body.teaser:hover,
+span.card__body.title:hover {
+  cursor: pointer;
+  color:#1890ff;
+} 
 .ant-card-body span:nth-child(2) {
   font-size:18px;
 }

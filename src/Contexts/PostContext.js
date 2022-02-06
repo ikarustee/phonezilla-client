@@ -18,7 +18,7 @@ export const getPosts = () => {
   // Retrieve all entries of a space
   return client.getEntries({
     content_type: "article",
-    order: "sys.createdAt"
+    order: "-sys.createdAt"
     // Order entries by date desc
   });
 };
