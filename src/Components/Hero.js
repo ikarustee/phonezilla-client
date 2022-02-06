@@ -36,6 +36,7 @@ const Hero = () => {
             })
             setHeroScene(slides[0])
             console.log(slides)
+            console.log(heroScene.image)
           })
         } catch (err) {
           console.log(err)

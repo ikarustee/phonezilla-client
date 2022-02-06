@@ -11,9 +11,9 @@ const Posts = () => {
   return (
     <main>
       <Row gutter={[16, 16]}>
-        {post.map((p) => {
+        {post.map((p, index) => {
           return (
-            <CardPost p={p}/>
+            <CardPost p={p} key={index}/>
           );
         })
         }
