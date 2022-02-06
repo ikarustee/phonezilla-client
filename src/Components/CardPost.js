@@ -4,6 +4,13 @@ import { Row, Col, Card } from "antd";
 
 
 const CardPost = ({p}) => {
+  const excerpt = Object.values(p.text.content[0].content[0].value)
+  // console.log(excerpt)
+  // console.log(excerpt.join(''))
+  // console.log(excerpt.join('').split(''))
+
+  // console.log(excerpt.join('').substring(0,100))
+  // console.log(excerpt)
 
   // const {hero} = useContext(HeroContext)
   // const [spliceCount, setSpliceCount] = useState([0,3])
@@ -19,7 +26,8 @@ const CardPost = ({p}) => {
         >
         <span className="card__body teaser">{p.teaser}</span>
         <span className="card__body title">{p.title}</span>
-        <button className="card__body" >Read more</button>
+        <span className="card__body excerpt">{excerpt.join('').split(' ').slice(0,10).join(' ')} ...</span>
+        <button className="card__body button" >Read more</button>
         </Card>
       </Link>
     </Col>

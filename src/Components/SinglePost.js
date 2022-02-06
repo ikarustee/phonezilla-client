@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PostContext } from "../Contexts/PostContext";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 
 const Posts = ({articles}) => {

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { PostContext } from "../Contexts/PostContext";
 import { Row, Col, Card } from "antd";
+import { PostContext } from "../Contexts/PostContext";
 import CardPost from "./CardPost"
 
 const Posts = () => {

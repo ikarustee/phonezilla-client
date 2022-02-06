@@ -46,6 +46,7 @@ const PostContextProvider = ({children}) => {
             };
           })
           setPosts(articles)
+          console.log(articles)
         })
         .catch((error) => console.log(error))
       }, []);
