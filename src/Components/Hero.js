@@ -7,12 +7,6 @@ import client from "../Components/client"
 //   deliveryToken: process.env.REACT_APP_DELIVERYTOKEN
 // };
 
-// // Create client
-// const client = createClient({
-//   space: config.spaceID,
-//   accessToken: config.deliveryToken
-// });
-  
 export const getHeros = () => {
   // Retrieve all entries of a space
   return client.getEntries({
@@ -21,40 +15,49 @@ export const getHeros = () => {
     // Order entries by date desc
   });
 };
-
+  
 const Hero = () => {
     const [heroScene, setHeroScene] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        getHeros()
-        .then((res) => {
-          const items = res.items
-          const slides = items.map((h) => {
-            return {
-              ...h,
-              image: h.fields.heroimage.fields.file.url,
-              heading: h.fields.title
-            }
-          })
-          setHeroScene(slides)
-        });
-      }, []);
-    
+
+      const getHeroScenes = async () => {
+        try {
+          await getHeros()
+          .then((res) => {
+            const items = res.items
+            const slides = items.map((h) => {
+              return {
+                ...h,
+                image: h?.fields?.heroimage?.fields.file.url,
+                heading: h?.fields?.title
+              }
+            })
+            setHeroScene(slides[0])
+          });
+        } catch (err) {
+          console.log(err)
+        }
+      }; getHeroScenes() 
+      } 
+      , []);
+      
+      console.log(heroScene)
       useEffect(() => {
         if(heroScene.length) return setIsLoading(false);
       }, [heroScene]);
-
+      
   return (
     <header className="hero" style={{marginBottom: '1em'}}>
-    <img src={heroScene[0].image} alt="gasdf" />
-    <h2 className="hero__heading">{heroScene[0].heading}</h2>
+    <img src={heroScene.image} alt="gasdf" />
+    <h2 className="hero__heading">{heroScene.heading}</h2>
       {/* {heroScene.map((h) => (
         <>
           <img src={h.image} alt="hero"/>
           <h2 className="hero__heading"><span>{h.heading}</span></h2>
         </>
-      ))} */}
+      )) */}
     </header>
   );
 };
