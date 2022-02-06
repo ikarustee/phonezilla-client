@@ -47,12 +47,14 @@ const Hero = () => {
 
   return (
     <header className="hero" style={{marginBottom: '1em'}}>
-      {heroScene.map((h) => (
+    <img src={heroScene[0].image} alt="gasdf" />
+    <h2 className="hero__heading">{heroScene[0].heading}</h2>
+      {/* {heroScene.map((h) => (
         <>
           <img src={h.image} alt="hero"/>
           <h2 className="hero__heading"><span>{h.heading}</span></h2>
         </>
-      ))}
+      ))} */}
     </header>
   );
 };
