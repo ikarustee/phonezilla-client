@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/phonezilla/static/css/main.722fa8be.css",
+    "main.js": "/phonezilla/static/js/main.c2cd9438.js",
+    "static/js/787.2c2fce2b.chunk.js": "/phonezilla/static/js/787.2c2fce2b.chunk.js",
+    "static/media/Inter-ExtraLightBETA.woff2": "/phonezilla/static/media/Inter-ExtraLightBETA.e277b094dfd160a3a55b.woff2",
+    "static/media/Inter-LightBETA.woff2": "/phonezilla/static/media/Inter-LightBETA.e0cfe7799858fdba218b.woff2",
+    "static/media/Inter-ExtraBold.woff2": "/phonezilla/static/media/Inter-ExtraBold.bde3e3662259fc307577.woff2",
+    "static/media/Inter-Bold.woff2": "/phonezilla/static/media/Inter-Bold.645621da4d850caa525b.woff2",
+    "static/media/font.woff": "/phonezilla/static/media/font.ab33514ac3196bd99df6.woff",
+    "static/media/font.woff2": "/phonezilla/static/media/font.afe8b3e0d2098dd77837.woff2",
+    "index.html": "/phonezilla/index.html",
+    "main.722fa8be.css.map": "/phonezilla/static/css/main.722fa8be.css.map",
+    "main.c2cd9438.js.map": "/phonezilla/static/js/main.c2cd9438.js.map",
+    "787.2c2fce2b.chunk.js.map": "/phonezilla/static/js/787.2c2fce2b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.722fa8be.css",
+    "static/js/main.c2cd9438.js"
+  ]
+}
