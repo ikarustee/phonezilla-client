@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import {Menu} from "antd"
-import { PostContext } from '../Contexts/PostContext';
+import logo from "../logo.png"
 
 
 const Navbar = () => {
@@ -30,9 +30,10 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav">
+        <Link to="/"><img src={logo} alt="" width="100"/></Link>
         <Menu theme="default" mode="horizontal" defaultSelectedKeys={location.pathname} breakpoint="md" trigger={null}>
-            <Menu.Item key="/" onClick={handleClick}><NavLink to="/">Home</NavLink></Menu.Item>
-            <Menu.Item key="/posts/" defaultSelectedKeys={'/posts/'}><NavLink to="/posts/">Posts</NavLink></Menu.Item>
+            <Menu.Item key="/" onClick={handleClick} className="nav__home"><NavLink to="/">Home</NavLink></Menu.Item>
+            <Menu.Item key="/posts/"><NavLink to="/posts/">Posts</NavLink></Menu.Item>
         </Menu>
       </div>
     </nav>
