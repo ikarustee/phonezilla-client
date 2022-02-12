@@ -43,7 +43,7 @@ const PostContextProvider = ({children}) => {
             imagecredit: p.fields.postImage.fields.title,
             text: p.fields.postTextcontent,
             id: p.sys.id,
-            date: p.sys.createdAt
+            date:p.sys.createdAt,
             };
           })
           setPosts(articles)

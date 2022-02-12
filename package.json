@@ -1,6 +1,6 @@
 {
   "homepage": "https://ikarustee.github.io/phonezilla/",
-  "name": "phonezilla ",
+  "name": "phonezilla",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +10,8 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.18.5",
-    "contentful": "^9.1.6",
+    "contentful": "^9.1.9",
+    "create-react-app": "^5.0.0",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "gh-pages": "^3.2.3",
