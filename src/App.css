@@ -1,3 +1,4 @@
+@import url(./fonts/fonts.css);
 :root {
   --shadow-color: 0deg 0% 0%;
   --shadow-elevation-low:
@@ -57,20 +58,23 @@ body {
 }
 
 nav {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.8);
+  display: flex;
   width: 100%;
   /* max-width: 1200px; */
   margin: 0 auto;
   position: sticky;
   top:0;
-  height:46px;
+  height:70px;
   z-index: 2;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
 }
 .nav {
   max-width: 1200px;
   position: relative;
   width: 100%;
   margin: 0 auto;
+  padding: 0 15px;
   display: flex;
   column-gap: 15px;
   align-items: center;
@@ -78,7 +82,8 @@ nav {
 .nav ul.ant-menu {
   background: transparent;
   border-bottom: 0;
-  flex-basis: 70%;
+  flex-basis: 100%;
+  justify-content: flex-end;
 }
 nav ul {
   padding-inline-start: 0;
@@ -90,12 +95,18 @@ nav ul li {
 nav ul li:first-of-type{
   padding-left:0;
 }
+.ant-menu-horizontal>.ant-menu-item a {
+  font-size: 16px;
+}
+a.active {
+  font-family: 'Inter';
+}
 header {
   display: flex;
   justify-content: center;
   height: 40vh;
   position: relative;
-  margin-top: -50px;
+  margin-top: -70px;
   z-index: 1;
   flex-wrap: wrap;
 }
@@ -106,7 +117,7 @@ header.hero img {
   object-fit: cover;
 }
 h2.hero__heading {
-  font-size: 60px;
+  font-size: 3em;
   line-height: 1;
   color: white;
   flex-basis: 100%;
@@ -149,7 +160,7 @@ article ul ul li::marker {
   align-items: flex-end;
   align-self: center;
   justify-content: flex-start;
-  min-height: 280px;
+  min-height: 467px;
   object-fit: cover;
   overflow: hidden;
   border-radius: 6px;
@@ -169,7 +180,7 @@ button.card__body.button:hover {
   border-radius: 8px 8px 0 0;
   overflow: hidden;
   transform: scale(1.13);
-  height: 80px;
+  height: 120px;
   margin-bottom: 12px;
 }
 .ant-card-hoverable.card__home > div > img {
@@ -183,7 +194,7 @@ button.card__body.button:hover {
   transform:scale(1.1)
 }
 .ant-card-body {
-  padding: 22px 16px 2em;
+  padding: 0 16px 2em;
   cursor: default;
   /* pointer-events: none; */
 /*   display: flex;
@@ -229,7 +240,17 @@ span.card__body.title:hover {
   font-size:18px;
 }
 button.card__body {
+  -webkit-appearance: none;
+  appearance: none;
   display: block;
+  position: absolute;
+  right: calc(50% - 60px);
+  bottom: 1em;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: none;
+  margin: 12px auto 0;
+  width: 120px;
 }
 button.ant-btn.ant-btn-primary.card__body.button > span {
   color: white;
@@ -259,11 +280,20 @@ a.imagecredits {
 }
 
 @media screen and (min-width:768px) {
+  h2.hero__heading {
+    font-size:60px;
+  }
   .card {
     min-height: 406px;
   }
 
   .ant-card-cover  {
     height: 180px;
+  }
+  .ant-card-body {
+    padding: 22px 16px 2em;
+  }
+  button.card__body {
+    right:1em;
   }
 }
