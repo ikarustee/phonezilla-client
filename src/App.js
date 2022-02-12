@@ -8,6 +8,7 @@ import {Row} from "antd"
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import SinglePost from "./Components/SinglePost"
+import Footer from "./Components/Footer";
 
 
 
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/posts/" element={<Posts />}></Route>
         <Route path="/posts/:id" element={<SinglePost key={post.map((p) => p.id)}/>}></Route>
       </Routes>
+    <Footer />
     </div>
   );
 }
