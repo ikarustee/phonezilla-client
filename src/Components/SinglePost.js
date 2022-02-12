@@ -1,18 +1,22 @@
-import {useContext, useParams} from "react"
-import {Link} from "react-router-dom"
+import {useContext} from "react"
+import {Link, useParams} from "react-router-dom"
 import { PostContext } from "../Contexts/PostContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { readableDate } from "./helper";
 
-const Posts = ({ articles }) => {
+const Posts = () => {
   const { post } = useContext(PostContext);
   const { id } = useParams();
 
   const thisPost =
-    articles &&
-    articles.find((a) => a.title.toLowerCase().split(/[ ']/).join("-") === id);
+    post &&
+    post.find((a) => a.title.toLowerCase().split(/[ ']/).join("-") === id);
   // const thisPost = articles && articles.find((a) => a.sys.id === id)
   // console.log(thisPost.title)
+
+  if(!thisPost) {
+    return "Loading ..."
+  } else {
 
   return (
     <>
@@ -40,7 +44,7 @@ const Posts = ({ articles }) => {
 
       <Link to="/posts/">back to posts</Link>
     </>
-  );
+  );}
 };
 
 export default Posts;
