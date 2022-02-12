@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="nav">
-        <Link to="/"><img src={logo} alt="" width="100"/></Link>
+        <Link to="/"><img src={logo} alt="" width="120"/></Link>
         <Menu theme="default" mode="horizontal" defaultSelectedKeys={location.pathname} breakpoint="md" trigger={null}>
             <Menu.Item key="/" onClick={handleClick} className="nav__home"><NavLink to="/">Home</NavLink></Menu.Item>
             <Menu.Item key="/posts/"><NavLink to="/posts/">Posts</NavLink></Menu.Item>
