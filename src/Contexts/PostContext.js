@@ -44,11 +44,10 @@ const PostContextProvider = ({children}) => {
             text: p.fields.postTextcontent,
             id: p.sys.id,
             date:p.sys.createdAt,
-
             };
           })
           setPosts(articles)
-          console.log(articles)
+          // console.log(articles)
         })
         .catch((error) => console.log(error))
       }, []);

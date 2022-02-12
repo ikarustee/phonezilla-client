@@ -26,8 +26,8 @@ const CardPost = ({p}) => {
         >
         <span className="card__body teaser">{p.teaser}</span>
         <span className="card__body title">{p.title}</span>
-        <span className="card__body excerpt">{excerpt.join('').split(' ').slice(0,35).join(' ')} ...</span>
-        <Button className="card__body button" type="default">Read more</Button>
+        <span className="card__body excerpt">{excerpt.join('').split(' ').slice(0,25).join(' ')} ...</span>
+        <Button className="card__body button" type="primary">Read more</Button>
         </Card>
       </Link>
     </Col>
