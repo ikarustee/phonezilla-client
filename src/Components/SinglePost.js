@@ -12,6 +12,9 @@ const SinglePost = () => {
   const thisPost =
     post &&
     post.find((a) => a.title.toLowerCase().split(/[ ']/).join("-") === id);
+
+    {let relatedPosts = post.filter(p => {
+      return  p.includes()})}
   // const thisPost = articles && articles.find((a) => a.sys.id === id)
   // console.log(thisPost.title)
 
@@ -39,8 +42,9 @@ const SinglePost = () => {
         <div className="moreposts">
           <h2>Posts you may like ...</h2>
           {console.log(post)}
-        </div>
 
+        </div>
+        
         <Link to="/posts/">back to posts</Link>
 =======
 
