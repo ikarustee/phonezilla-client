@@ -98,6 +98,10 @@ nav ul li:first-of-type{
 .ant-menu-horizontal>.ant-menu-item a {
   font-size: 16px;
 }
+.ant-menu-horizontal>.ant-menu-item:after, 
+.ant-menu-horizontal>.ant-menu-submenu:after {
+  bottom:-11px;
+}
 a.active {
   font-family: 'Inter';
 }
@@ -127,12 +131,6 @@ h2.hero__heading {
   text-shadow: 0 2px 10px rgba(0,0,0,0.2);
   padding: 0 16px;
 }
-/* h2.hero__heading span {
-  background-image: linear-gradient(45deg, #B627C1, #B627C1);
-  background-size: auto 70px;
-  background-position: 0 6px;
-  background-repeat: repeat-x;
-} */
 a.active {
   color: red;
 }
@@ -196,25 +194,6 @@ button.card__body.button:hover {
 .ant-card-body {
   padding: 0 16px 2em;
   cursor: default;
-  /* pointer-events: none; */
-/*   display: flex;
-  flex-wrap: wrap;
-  border-radius: 0 0 8px 8px;
-  position: absolute;
-  /* background-image: linear-gradient(to top, rgba(0,0,0,0.75), transparent); */
-  /* width: 100%; */ 
-}
-.ant-card-body::after {
-  /* content: '';
-  width: 100%;
-  height: 90px;
-  position: absolute;
-  background-image: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-  left: 0;
-  bottom: 0;
-  z-index: 1;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px; */
 }
 .ant-card-body span {
   color: black;
