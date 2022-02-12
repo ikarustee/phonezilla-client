@@ -1,3 +1,5 @@
+import {useContext, useParams} from "react"
+import {Link} from "react-router-dom"
 import { PostContext } from "../Contexts/PostContext";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { readableDate } from "./helper";
@@ -39,5 +41,6 @@ const Posts = ({ articles }) => {
       <Link to="/posts/">back to posts</Link>
     </>
   );
+};
 
 export default Posts;
