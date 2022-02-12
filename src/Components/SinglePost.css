@@ -1,0 +1,19 @@
+.singlepostwrapper{
+    box-sizing: border-box;  
+    max-width: 990px;
+    margin:0 auto;
+    
+}  
+.singlepost{
+
+}
+.singlepost_img{
+    text-align: center;
+    padding:50px;
+    width: 900px;
+    font-size: 14px;
+
+}
+.moreposts h2{
+    font: normal 2.5em;
+}
