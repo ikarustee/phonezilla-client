@@ -24,19 +24,17 @@ const Hero = () => {
 
       const getHeroScenes = async () => {
         try {
-          await getHeros()
-          .then((res) => {
-            const items = res.items
-            const slides = items.map((h) => {
-              return {
-                ...h,
-                image: h?.fields?.heroimage?.fields.file.url,
-                heading: h?.fields?.title
-              }
-            })
-            setHeroScene(slides[0])
-            console.log(slides)
+          const res = await getHeros()
+          const items = res.items
+          const slides = items.map((h) => {
+            return {
+              ...h,
+              image: h?.fields?.heroimage?.fields.file.url,
+              heading: h?.fields?.title
+            }
           })
+          setHeroScene(slides[0])
+          console.log(slides)
         } catch (err) {
           console.log(err)
         }};
