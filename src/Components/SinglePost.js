@@ -18,7 +18,6 @@ const SinglePost = () => {
   if (!thisPost) {
     return "Loading ...";
   } else {
-<<<<<<< HEAD
     return (
       <div className="singlepostwrapper">
         <div className="singlepost">
@@ -42,23 +41,6 @@ const SinglePost = () => {
         </div>
 
         <Link to="/posts/">back to posts</Link>
-=======
-
-  return (
-    <>
-      <div className="singlepost">
-        <h2 className="singlepost_title">{thisPost.title}</h2>
-        <small className="singlepost_date">{readableDate(thisPost.date)}</small>
-        <img
-          className="singlepost_img"
-          src={thisPost.img}
-          alt={thisPost.title}
-        />
-      </div>
-
-      <div className="singlepost_body">
-        {documentToReactComponents(thisPost.text)}
->>>>>>> Improve navbar appearance
       </div>
     );
   }
