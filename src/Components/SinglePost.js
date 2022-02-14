@@ -8,10 +8,32 @@ import "./SinglePost.css";
 const SinglePost = () => {
   const { post } = useContext(PostContext);
   const { id } = useParams();
-
+  let relPost = [];
   const thisPost =
     post &&
     post.find((a) => a.title.toLowerCase().split(/[ ']/).join("-") === id);
+
+  if (thisPost) {
+    let currentPostTags = thisPost.tags.map((t) => {
+      return t.sys.id;
+    });
+    /*     console.log("Tag of the current post::" + currentPostTags);
+     */
+    let relatedPosts = post.map((p) => {
+      p.tags.map((t) => {
+        if (
+          currentPostTags.includes(t.sys.id) &&
+          !relPost.includes(p.fields.title)
+        )
+          relPost.push(p.fields.title);
+        /* console.log("I am t.sys.id for " + t.sys.id); */
+        /*         console.log("Inside  the map rel post:: " + relPost);
+         */
+      });
+    });
+    /*     console.log("I am a related posts::" + relatedPosts);
+     */
+  }
   // const thisPost = articles && articles.find((a) => a.sys.id === id)
   // console.log(thisPost.title)
 
@@ -37,7 +59,11 @@ const SinglePost = () => {
 
         <div className="moreposts">
           <h2>Posts you may like ...</h2>
-          {console.log(post)}
+          {/*  {console.log("I am this related POSTS::" + relPost.length)} */}
+          {/* for more posts */}
+          {relPost.map((p, i) => (
+            <li key={Math.random() * 20000}>{p}</li>
+          ))}
         </div>
 
         <Link to="/posts/">back to posts</Link>

@@ -1,6 +1,6 @@
-import React, {createContext, useState, useEffect} from "react"
+import React, { createContext, useState, useEffect } from "react";
 // import { createClient } from "contentful";
-import client from "../Components/client"
+import client from "../Components/client";
 
 // // Main configuration
 // const config = {
@@ -13,28 +13,28 @@ import client from "../Components/client"
 //   space: config.spaceID,
 //   accessToken: config.deliveryToken
 // });
-  
+
 export const getPosts = () => {
   // Retrieve all entries of a space
   return client.getEntries({
     content_type: "article",
-    order: "-sys.createdAt"
+    order: "-sys.createdAt",
     // Order entries by date desc
   });
 };
 
-export const PostContext = createContext()
+export const PostContext = createContext();
 
-const PostContextProvider = ({children}) => {
-    const [posts, setPosts] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+const PostContextProvider = ({ children }) => {
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        getPosts()
-        .then((res) => {
-          const items = res.items
-          const articles = items.map((p) => {
-            return{
+  useEffect(() => {
+    getPosts()
+      .then((res) => {
+        const items = res.items;
+        const articles = items.map((p) => {
+          return {
             ...p,
             teaser: p.fields.teaser,
             title: p.fields.title,
@@ -43,21 +43,22 @@ const PostContextProvider = ({children}) => {
             imagecredit: p.fields.postImage.fields.title,
             text: p.fields.postTextcontent,
             id: p.sys.id,
-            date:p.sys.createdAt,
-            };
-          })
-          setPosts(articles)
-          // console.log(articles)
-        })
-        .catch((error) => console.log(error))
-      }, []);
-    
-      useEffect(() => {
-        if(posts.length) return setIsLoading(false);
-      }, [posts]);
+            date: p.sys.createdAt,
+            tags: p.metadata.tags,
+          };
+        });
+        setPosts(articles);
+        // console.log(articles)
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    if (posts.length) return setIsLoading(false);
+  }, [posts]);
 
   return (
-    <PostContext.Provider value={{post: posts}}>
+    <PostContext.Provider value={{ post: posts }}>
       {children}
     </PostContext.Provider>
   );
