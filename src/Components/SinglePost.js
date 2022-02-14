@@ -62,7 +62,9 @@ const SinglePost = () => {
           {/*  {console.log("I am this related POSTS::" + relPost.length)} */}
           {/* for more posts */}
           {relPost.map((p, i) => (
+            <Link to={`/posts/${p.toLowerCase().split(/[ ']/).join('-')}`} className="card__link">
             <li key={Math.random() * 20000}>{p}</li>
+            </Link>
           ))}
         </div>
 
