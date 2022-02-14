@@ -40,7 +40,7 @@ export default function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route exact path="/phonezilla" element={<Home />}></Route>
+        <Route exact path="/" element={<Home />}></Route>
         <Route path="/posts/" element={<Posts />}></Route>
         <Route path="/posts/:id" element={<SinglePost key={post.map((p) => p.id)}/>}></Route>
       </Routes>
