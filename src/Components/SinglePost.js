@@ -13,15 +13,27 @@ const SinglePost = () => {
     post &&
     post.find((a) => a.title.toLowerCase().split(/[ ']/).join("-") === id);
 
-    {let relatedPosts = post.filter(p => {
-      return  p.includes()})}
+  if (thisPost) {
+    let myArr = thisPost.tags.map((t) => {
+      return t.sys.id;
+    });
+    console.log(myArr);
+    let modArr;
+    let relatedPosts = post.map((p) => {
+      modArr = p.tags.map((t) => {
+        return t.sys.id;
+      });
+      return modArr;
+    });
+
+    console.log("I am a related posts tags::" + relatedPosts);
+  }
   // const thisPost = articles && articles.find((a) => a.sys.id === id)
   // console.log(thisPost.title)
 
   if (!thisPost) {
     return "Loading ...";
   } else {
-<<<<<<< HEAD
     return (
       <div className="singlepostwrapper">
         <div className="singlepost">
@@ -41,28 +53,10 @@ const SinglePost = () => {
 
         <div className="moreposts">
           <h2>Posts you may like ...</h2>
-          {console.log(post)}
-
+          {}
         </div>
-        
+
         <Link to="/posts/">back to posts</Link>
-=======
-
-  return (
-    <>
-      <div className="singlepost">
-        <h2 className="singlepost_title">{thisPost.title}</h2>
-        <small className="singlepost_date">{readableDate(thisPost.date)}</small>
-        <img
-          className="singlepost_img"
-          src={thisPost.img}
-          alt={thisPost.title}
-        />
-      </div>
-
-      <div className="singlepost_body">
-        {documentToReactComponents(thisPost.text)}
->>>>>>> Improve navbar appearance
       </div>
     );
   }
