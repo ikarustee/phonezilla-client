@@ -8,13 +8,9 @@ const Navbar = () => {
 
   const [currentPage, setCurrentPage] = useState("home")
   const [selectedPage, setSelectedPage] = useState()
-
-  // Problem: When page is refreshed the navigation looses its active color.
-  // Found some hints on stackoverflow regarding useNavigate and useLocation but could not apply it properly
   
   let location = useLocation();
   let navigate = useNavigate();
-  // console.log(location.pathname)
   
 
   const handleClick = (e) => {
