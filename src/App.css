@@ -14,7 +14,7 @@
     --primary: #0099FF;
     --secondary: #0060c5;
     --gradient-bg: linear-gradient(to right top, #0099ff, #008af1, #007ce2, #006ed4, #0060c5);
-    --gradient-transition-bg: background-image: linear-gradient(to left bottom, #0099ff, #008af1, #007ce2, #006ed4, #0060c5);
+    --gradient-transition-bg: linear-gradient(to left bottom, #0099ff, #008af1, #007ce2, #006ed4, #0060c5);
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -270,7 +270,7 @@ button.backtoposts {
 button.card__body:hover,
 button.backtoposts:hover {
   background-color: var(--secondary);
-  /* background-image: var(--gradient-transition-bg); */
+  background-image: var(--gradient-transition-bg);
   transition: background-color 300ms ease-in-out;
 }
 button.ant-btn.ant-btn-primary.card__body.button > span {
