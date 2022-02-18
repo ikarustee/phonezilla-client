@@ -208,7 +208,7 @@ article ul ul li::marker {
   height: 100%;
   width: auto;
 }
-.ant-card-cover:hover > img{
+.ant-card-cover:hover > img {
   transform:scale(1.1);
 }
 .ant-card-body {
