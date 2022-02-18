@@ -1,19 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Card, Button } from "antd";
+import { Col, Card, Button } from "antd";
 
 
 const CardPost = ({p}) => {
   const excerpt = Object.values(p.text.content[0].content[0].value)
-  // console.log(excerpt)
-  // console.log(excerpt.join(''))
-  // console.log(excerpt.join('').split(''))
-
-  // console.log(excerpt.join('').substring(0,100))
-  // console.log(excerpt)
-
-  // const {hero} = useContext(HeroContext)
-  // const [spliceCount, setSpliceCount] = useState([0,3])
 
   return (
       <Col key={p.id} span={8} xs={12} sm={12} md={12} lg={8} xl={8}>

@@ -17,8 +17,7 @@ const SinglePost = () => {
     let currentPostTags = thisPost.tags.map((t) => {
       return t.sys.id;
     });
-    /*     console.log("Tag of the current post::" + currentPostTags);
-     */
+
     let relatedPosts = post.map((p) => {
       p.tags.map((t) => {
         if (
@@ -26,16 +25,12 @@ const SinglePost = () => {
           !relPost.includes(p.fields.title)
         )
           relPost.push(p.fields.title);
-        /* console.log("I am t.sys.id for " + t.sys.id); */
-        /*         console.log("Inside  the map rel post:: " + relPost);
-         */
+
       });
     });
-    /*     console.log("I am a related posts::" + relatedPosts);
-     */
+
   }
-  // const thisPost = articles && articles.find((a) => a.sys.id === id)
-  // console.log(thisPost.title)
+
 
   if (!thisPost) {
     return "Loading ...";
@@ -59,8 +54,6 @@ const SinglePost = () => {
 
         <div className="moreposts">
           <h4>Posts you may like ...</h4>
-          {/*  {console.log("I am this related POSTS::" + relPost.length)} */}
-          {/* for more posts */}
           {relPost.map((p, i) => (
             <Link to={`/posts/${p.toLowerCase().split(/[ ']/).join('-')}`} className="card__link">
             <li key={Math.random() * 20000}>{p}</li>
