@@ -89,10 +89,19 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Inter';
   src: url('./webFonts/Inter/Inter-Bold.woff2') format('woff2');
   font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./webFonts/Inter/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
@@ -104,12 +113,14 @@
   font-style: normal;
   font-display: swap;
 }
+
+
 body {
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size:16px;
 }
 h1, h2, h3, h4,
-h1 a, h2 a, h3 a, h4 a,
+h1 a, h2 a, h3 a, h4 a
 .ant-card-body span.title,
 span.card__body.title {
   color:#0099FF;
