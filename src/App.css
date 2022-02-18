@@ -13,7 +13,8 @@
     0.3px 36.2px 54.3px hsl(var(--shadow-color) / 0.26);
     --primary: #0099FF;
     --secondary: #0060c5;
-    --footer-bg: linear-gradient(to right top, #0099ff, #008af1, #007ce2, #006ed4, #0060c5);
+    --gradient-bg: linear-gradient(to right top, #0099ff, #008af1, #007ce2, #006ed4, #0060c5);
+    --gradient-transition-bg: background-image: linear-gradient(to left bottom, #0099ff, #008af1, #007ce2, #006ed4, #0060c5);
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -64,7 +65,7 @@ nav {
   background-color: rgba(255,255,255,0.8);
   display: flex;
   width: 100%;
-  /* max-width: 1200px; */
+  /* max-width: 1000px; */
   margin: 0 auto;
   position: sticky;
   top:0;
@@ -73,7 +74,7 @@ nav {
   box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
 }
 .nav {
-  max-width: 1200px;
+  max-width: 1000px;
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -124,22 +125,31 @@ header.hero img {
   object-fit: cover;
 }
 h1 {
-  color:var(--primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-bg);
   font-size: 3rem;
   line-height: 1;
+  margin: 2rem 0 4rem;
+  padding: 4px 0;
 }
 h1.divider {
+  margin: 1.5rem 0 3rem;
   text-align: center;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-bg);
 }
 h2.hero__heading {
   font-size: 3em;
   line-height: 1;
   color: white;
   flex-basis: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   position: absolute;
-  bottom: 20%;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  top: calc(50% - 60px - 1rem);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.225);
   padding: 0 16px;
   text-align: center;
 }
@@ -149,7 +159,8 @@ a.active {
 main {
   text-align: left;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
+  min-height:calc(100vh - 228px - 2rem - 70px);
   margin:0 auto;
   padding:1em;
   box-sizing: border-box;
@@ -199,6 +210,8 @@ button.card__body.button:hover {
 }
 .ant-card-cover > img{
   transition: all 300ms ease-in;
+  height: 100%;
+  width: auto;
 }
 .ant-card-cover:hover > img{
   transform:scale(1.1)
@@ -233,10 +246,16 @@ span.card__body.title:hover {
 span.card__body.excerpt {
   display: none;
 }
-button.card__body {
+button.card__body,
+button.custom,
+button.backtoposts {
   -webkit-appearance: none;
   appearance: none;
+  background-color: var(--primary);
+  background-image: var(--gradient-bg);
   display: block;
+  color:white;
+  cursor: pointer;
   position: absolute;
   right: calc(50% - 60px);
   bottom: 1em;
@@ -245,10 +264,26 @@ button.card__body {
   box-shadow: none;
   margin: 12px auto 0;
   width: 120px;
+  transition: all 300ms ease-in;
+}
+button.backtoposts{
+  padding: 8px 16px;
+  min-width: 140px;
+  box-sizing: border-box;
+  right: 0;
+}
+button.card__body:hover,
+button.backtoposts:hover {
+  background-color: var(--secondary);
+  background-image: var(--gradient-transition-bg);
+  transition: background-color .3s ease-in-out;
 }
 button.ant-btn.ant-btn-primary.card__body.button > span {
   color: white;
   font-weight: 600;
+}
+button.backtoposts {
+  position: relative;
 }
 .tags {
   padding: 8px;
@@ -272,9 +307,43 @@ img.postimg {
 a.imagecredits {
   display: block;
 }
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+}
+.contact h1 {
+  flex-basis: 100%;
+  margin: 2rem 0 4rem;
+  text-align: center;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-bg);
+}
+.contact__illustration, form {
+  flex-basis: 100%;
+}
+.contact__illustration img {
+  width: 100%;
+  position: relative;
+  top: -3rem;
+}
+form .ant-row.ant-form-item {
+  position: relative;
+  margin-bottom: 2.75rem;
+}
+.ant-col.ant-form-item-label {
+  position: absolute;
+  top: -2rem;
+}
+.ant-form-item-label>label:after {
+  content:"";
+}
+
 footer {
-  background-image: var(--footer-bg);
-  padding:1.5rem 1rem 3rem;
+  background-image: var(--gradient-bg);
+  padding:2rem 1rem;
   height: auto;
   width: 100%;
   display: flex;
@@ -297,20 +366,24 @@ footer img {
   line-height: 1;
   text-align: center;
   color: #004288;
+  font-size:14px;
+  font-weight:500;
 }
 .contactinfo p:last-child {
   padding-top:1rem;
 }
-.pseudolink {
+.pseudolink span {
   color:white;
+  padding:0 8px;
 }
 
 @media screen and (min-width:768px) {
   h2.hero__heading {
     font-size:60px;
+    top: calc(50% - 30px);
   }
   .card {
-    min-height: 406px;
+    min-height: 422px;
   }
 
   .ant-card-cover  {
@@ -321,9 +394,14 @@ footer img {
   }
   span.card__body.excerpt {
     display: block;
+    line-height: 1.5;
+    margin-bottom: 1rem;
   }
   button.card__body {
     right:1em;
+  }
+  .contact__illustration, form {
+    flex-basis: calc(50% - 2rem);
   }
   footer{
     margin-top: 2rem;
