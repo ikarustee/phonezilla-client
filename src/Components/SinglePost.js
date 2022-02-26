@@ -12,7 +12,7 @@ const SinglePost = () => {
   let URL = `http://localhost:8080/posts/${id}`;
   
   useEffect(()=> {
-    console.log(id, thisPost)
+    // console.log(id, thisPost)
         if(post && post.find((a) => a.id === id)) {
           setThisPost(post.find((a) => a.id === id))
         } else {
@@ -20,8 +20,9 @@ const SinglePost = () => {
           try {
             const response = await fetch(URL);
             const jsonData = await response.json();
+            console.log("fetched")
             setThisPost(jsonData);
-            console.log(jsonData)
+            // console.log(jsonData)
           } catch (err) {
             console.log(err)
           }
@@ -39,12 +40,12 @@ const SinglePost = () => {
         )
         relPost.push(p);
       }); 
-      console.log(new Set(relPost))
+      // console.log(new Set(relPost))
     });
     relPost = [...new Set(relPost)]
   }
 
-  
+  console.log(`http://localhost:8080/${thisPost.img}`)
   if (!thisPost) {
     return "Loading ...";
   } else {
@@ -57,7 +58,7 @@ const SinglePost = () => {
           </small>
           <img
             className="singlepost_img"
-            src={thisPost.img}
+            src={"http://localhost:8080/" + thisPost?.img}
             alt={thisPost.title}
           />
           <div className="singlepost_body">

@@ -19,7 +19,7 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/posts/" element={<Posts />}></Route>
-        <Route path="/posts/:id" element={<SinglePost key={post.map((p) => p.id)}/>}></Route>
+        <Route path="/posts/:id" element={<SinglePost />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Routes>
     <Footer />
