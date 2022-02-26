@@ -1,42 +1,46 @@
 import React, { createContext, useState, useEffect } from "react";
-import client from "../Components/client";
+// import client from "../Components/client";
 
 
-export const getPosts = () => {
-  return client.getEntries({
-    content_type: "article",
-    order: "-sys.createdAt",
-  });
-};
+// export const getPosts = () => {
+//   return client.getEntries({
+//     content_type: "article",
+//     order: "-sys.createdAt",
+//   });
+// };
 
 export const PostContext = createContext();
 
 const PostContextProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const URL = "http://localhost:8080/posts/"
 
-  useEffect(() => {
-    getPosts()
-      .then((res) => {
-        const items = res.items;
-        const articles = items.map((p) => {
-          return {
-            ...p,
-            teaser: p.fields.teaser,
-            title: p.fields.title,
-            img: p.fields.postImage.fields.file.url,
-            imagecreditURL: p.fields.postImage.fields.description,
-            imagecredit: p.fields.postImage.fields.title,
-            text: p.fields.postTextcontent,
-            id: p.sys.id,
-            date: p.sys.createdAt,
-            tags: p.metadata.tags,
-          };
-        });
-        setPosts(articles);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  async function getPosts() {
+    try {
+      const response = await fetch(URL);
+      const jsonData = await response.json();
+      const articles = jsonData.map((p) => {
+        return {
+          ...p,
+          id:p._id,
+          teaser: p.teaser,
+          title: p.title,
+          img: p.image,
+          imagecredit: p.title,
+          text: p.text,
+          date: p.createdAt,
+          tags: p.tags
+        };
+      });
+      setPosts(articles);
+  } catch (e) {
+      console.error(e);
+  } 
+} 
+    useEffect(() => {
+      getPosts();
+    }, []);
 
   useEffect(() => {
     if (posts.length) return setIsLoading(false);

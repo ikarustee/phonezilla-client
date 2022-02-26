@@ -4,11 +4,11 @@ import { Col, Card, Button } from "antd";
 
 
 const CardPost = ({p}) => {
-  const excerpt = Object.values(p.text.content[0].content[0].value)
+  const excerpt = Object.values(p.text)
 
   return (
       <Col key={p.id} span={8} xs={12} sm={12} md={12} lg={8} xl={8}>
-      <Link to={`/posts/${p.title.toLowerCase().split(/[ ']/).join('-')}`} className="card__link">
+      <Link to={`/posts/${p.id}`} className="card__link">
         <Card 
         className="card"
         key={p.id} 

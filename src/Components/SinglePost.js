@@ -1,7 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PostContext } from "../Contexts/PostContext";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { readableDate } from "./helper";
 import "./SinglePost.css";
 
@@ -9,28 +8,46 @@ const SinglePost = () => {
   const { post } = useContext(PostContext);
   const { id } = useParams();
   let relPost = [];
-  const thisPost =
-    post &&
-    post.find((a) => a.title.toLowerCase().split(/[ ']/).join("-") === id);
+  const [thisPost, setThisPost] = useState(post && post.find((a) => a.id === id));
+  
+  if(!thisPost){
+    async function singleFetch() {
+      try {
+        const response = await fetch("http://localhost:8080/posts/" + id);
+        const jsonData = await response.json();
+        setThisPost(jsonData);
+        console.log(jsonData)
+      } catch (err) {
+        console.log(err)
+      }
+  } singleFetch()
+}
 
-  if (thisPost) {
+  /* // async function functionName() {
+      try {
+
+      } catch {
+        
+      }
+  } */
+ /*  if (thisPost) {
     let currentPostTags = thisPost.tags.map((t) => {
-      return t.sys.id;
-    });
-
+      return t;
+    }); */
+/* 
     let relatedPosts = post.map((p) => {
       p.tags.map((t) => {
         if (
           currentPostTags.includes(t.sys.id) &&
-          !relPost.includes(p.fields.title)
+          !relPost.includes(p.title)
         )
-          relPost.push(p.fields.title);
+          relPost.push(p.title);
 
       });
     });
 
   }
-
+ */
 
   if (!thisPost) {
     return "Loading ...";
@@ -48,7 +65,7 @@ const SinglePost = () => {
             alt={thisPost.title}
           />
           <div className="singlepost_body">
-            {documentToReactComponents(thisPost.text)}
+            {thisPost.text}
           </div>
         </div>
 
