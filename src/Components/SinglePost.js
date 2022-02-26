@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PostContext } from "../Contexts/PostContext";
 import { readableDate } from "./helper";
@@ -8,47 +8,43 @@ const SinglePost = () => {
   const { post } = useContext(PostContext);
   const { id } = useParams();
   let relPost = [];
-  const [thisPost, setThisPost] = useState(post && post.find((a) => a.id === id));
+  const [thisPost, setThisPost] = useState();
+  let URL = `http://localhost:8080/posts/${id}`;
   
-  if(!thisPost){
-    async function singleFetch() {
-      try {
-        const response = await fetch("http://localhost:8080/posts/" + id);
-        const jsonData = await response.json();
-        setThisPost(jsonData);
-        console.log(jsonData)
-      } catch (err) {
-        console.log(err)
+  useEffect(()=> {
+    console.log(id, thisPost)
+        if(post && post.find((a) => a.id === id)) {
+          setThisPost(post.find((a) => a.id === id))
+        } else {
+        async function singleFetch() {
+          try {
+            const response = await fetch(URL);
+            const jsonData = await response.json();
+            setThisPost(jsonData);
+            console.log(jsonData)
+          } catch (err) {
+            console.log(err)
+          }
+        } singleFetch()
       }
-  } singleFetch()
-}
+    }, [id])
+  
 
-  /* // async function functionName() {
-      try {
-
-      } catch {
-        
-      }
-  } */
- /*  if (thisPost) {
-    let currentPostTags = thisPost.tags.map((t) => {
-      return t;
-    }); */
-/* 
-    let relatedPosts = post.map((p) => {
+ if (thisPost?.tags && thisPost.tags.length > 1) {
+    let currentPostTags = thisPost.tags
+    post.map((p) => {
       p.tags.map((t) => {
         if (
-          currentPostTags.includes(t.sys.id) &&
-          !relPost.includes(p.title)
+          currentPostTags.includes(t) && !relPost.includes(p.title)
         )
-          relPost.push(p.title);
-
-      });
+        relPost.push(p);
+      }); 
+      console.log(new Set(relPost))
     });
-
+    relPost = [...new Set(relPost)]
   }
- */
 
+  
   if (!thisPost) {
     return "Loading ...";
   } else {
@@ -72,12 +68,11 @@ const SinglePost = () => {
         <div className="moreposts">
           <h4>Posts you may like ...</h4>
           {relPost.map((p, i) => (
-            <Link to={`/posts/${p.toLowerCase().split(/[ ']/).join('-')}`} className="card__link">
-            <li key={Math.random() * 20000}>{p}</li>
+            <Link to={`/posts/${p.id}`} key={Math.random() * 20000 +i} className="card__link">
+              <li>{p.title}</li>
             </Link>
           ))}
         </div>
-
         <Link to="/posts/"><button className="backtoposts">back to posts</button></Link>
       </div>
     );
