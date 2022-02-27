@@ -10,13 +10,16 @@ const SinglePost = () => {
   const { id } = useParams();
   let relPost = [];
   const [thisPost, setThisPost] = useState();
+  const [postImage, setPostImage] = useState() 
   let URL = `http://localhost:8080/posts/${id}`;
-  const imageBaseURL = "http://localhost:8080/images/"
-  
+  const imageBaseURL = "../../public/images/"
+
   useEffect(()=> {
     // console.log(id, thisPost)
         if(post && post.find((a) => a.id === id)) {
           setThisPost(post.find((a) => a.id === id))
+          setPostImage(post.find((image) => image.img === postImage))
+          console.log(postImage)
         } else {
         async function singleFetch() {
           try {
@@ -60,8 +63,8 @@ const SinglePost = () => {
           </small>
           <img
             className="singlepost_img"
-            src={`${imageBaseURL}${thisPost.img}`}
-            // <img src={require( "" + props.src )} alt={props.imageAlt} />
+            src={postImage}
+            // <img src={require( "" + props.src )} alt={props.imageAlt} /> 
             // <img src={ process.env.PUBLIC_URL`/uploads/${this.props.data.postImage}`} />
 
             alt={thisPost.title}
