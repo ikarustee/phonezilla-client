@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { PostContext } from "../Contexts/PostContext";
 import { readableDate } from "./helper";
 import "./SinglePost.css";
+import ReactMarkdown from 'react-markdown'
 
 const SinglePost = () => {
   const { post } = useContext(PostContext);
@@ -10,6 +11,7 @@ const SinglePost = () => {
   let relPost = [];
   const [thisPost, setThisPost] = useState();
   let URL = `http://localhost:8080/posts/${id}`;
+  const imageBaseURL = "http://localhost:8080/images/"
   
   useEffect(()=> {
     // console.log(id, thisPost)
@@ -45,7 +47,7 @@ const SinglePost = () => {
     relPost = [...new Set(relPost)]
   }
 
-  console.log(`http://localhost:8080/${thisPost.img}`)
+  // console.log(`http://localhost:8080/${thisPost.img}`)
   if (!thisPost) {
     return "Loading ...";
   } else {
@@ -58,11 +60,14 @@ const SinglePost = () => {
           </small>
           <img
             className="singlepost_img"
-            src={"http://localhost:8080/" + thisPost?.img}
+            src={`${imageBaseURL}${thisPost.img}`}
+            // <img src={require( "" + props.src )} alt={props.imageAlt} />
+            // <img src={ process.env.PUBLIC_URL`/uploads/${this.props.data.postImage}`} />
+
             alt={thisPost.title}
           />
           <div className="singlepost_body">
-            {thisPost.text}
+          <ReactMarkdown>{thisPost.text}</ReactMarkdown>
           </div>
         </div>
 

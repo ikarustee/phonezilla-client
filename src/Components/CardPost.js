@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Card, Button } from "antd";
-
+import ReactMarkdown from 'react-markdown'
 
 const CardPost = ({p}) => {
   const excerpt = Object.values(p.text)
@@ -17,7 +17,7 @@ const CardPost = ({p}) => {
         >
         <span className="card__body teaser">{p.teaser}</span>
         <span className="card__body title">{p.title}</span>
-        <span className="card__body excerpt">{excerpt.join('').split(' ').slice(0,25).join(' ')} ...</span>
+        <ReactMarkdown>{excerpt.join('').split(' ').slice(0,25).join(' ') + " ..."}</ReactMarkdown>
         <Button className="card__body button" type="primary">Read more</Button>
         </Card>
       </Link>
