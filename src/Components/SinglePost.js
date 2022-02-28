@@ -11,8 +11,7 @@ const SinglePost = () => {
   let relPost = [];
   const [thisPost, setThisPost] = useState();
   const [postImage, setPostImage] = useState() 
-  let URL = `http://localhost:8080/posts/${id}`;
-  const imageBaseURL = "../../public/images/"
+  let URL = `http://localhost:8080/posts/${id}`; 
 
   useEffect(()=> {
     // console.log(id, thisPost)
@@ -63,7 +62,7 @@ const SinglePost = () => {
           </small>
           <img
             className="singlepost_img"
-            src={postImage}
+            src={thisPost.img}
             // <img src={require( "" + props.src )} alt={props.imageAlt} /> 
             // <img src={ process.env.PUBLIC_URL`/uploads/${this.props.data.postImage}`} />
 
