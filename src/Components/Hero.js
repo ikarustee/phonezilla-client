@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 const Hero = () => {
   const [heroScene, setHeroScene] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const URL = "http://localhost:8080/hero";
+  const URL = `${process.env.REACT_APP_HOST}/hero`;
 
-  const url = "http://localhost:8080/images";
+  const url = `${process.env.REACT_APP_HOST}/images`;
 
   useEffect(() => {
     async function hero() {

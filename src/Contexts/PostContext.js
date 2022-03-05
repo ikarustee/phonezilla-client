@@ -14,7 +14,7 @@ export const PostContext = createContext();
 const PostContextProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const URL = "http://localhost:8080/posts/"
+  const URL = `${process.env.REACT_APP_HOST}/posts/`
 
   async function getPosts() {
     try {
