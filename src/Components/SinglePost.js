@@ -22,9 +22,9 @@ const SinglePost = () => {
         try {
           const response = await fetch(URL);
           const jsonData = await response.json();
-          console.log("fetched");
-          setThisPost(jsonData);
-          // console.log(jsonData)
+          // console.log("fetched");
+          setThisPost(jsonData[0]);
+          // console.log(jsonData[0])
         } catch (err) {
           console.log(err);
         }
@@ -54,7 +54,7 @@ const SinglePost = () => {
         <div className="singlepost">
           <h1 className="singlepost_title">{thisPost.title}</h1>
           <small className="singlepost_date">
-            {readableDate(thisPost.date)}
+            {readableDate(thisPost.createdAt)}
           </small>
           <img
             className="singlepost_img"

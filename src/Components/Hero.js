@@ -13,7 +13,7 @@ const Hero = () => {
         const response = await fetch(URL);
         const jsonData = await response.json();
         setHeroScene(jsonData[0]);
-        console.log(jsonData[0]);
+        // console.log(jsonData[0]);
       } catch (err) {
         console.log(err);
       }
