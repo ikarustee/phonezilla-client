@@ -3,16 +3,17 @@ import { Link, useParams } from "react-router-dom";
 import { PostContext } from "../Contexts/PostContext";
 import { readableDate } from "./helper";
 import "./SinglePost.css";
+import ReactMarkdown from 'react-markdown'
 
 const SinglePost = () => {
   const { post } = useContext(PostContext);
   const { id } = useParams();
   let relPost = [];
   const [thisPost, setThisPost] = useState();
-  let URL = `http://localhost:8080/posts/${id}`;
-  
+  let URL = `http://localhost:8080/posts/${id}`; 
+
   useEffect(()=> {
-    console.log(id, thisPost)
+    // console.log(id, thisPost)
         if(post && post.find((a) => a.id === id)) {
           setThisPost(post.find((a) => a.id === id))
         } else {
@@ -20,8 +21,9 @@ const SinglePost = () => {
           try {
             const response = await fetch(URL);
             const jsonData = await response.json();
+            console.log("fetched")
             setThisPost(jsonData);
-            console.log(jsonData)
+            // console.log(jsonData)
           } catch (err) {
             console.log(err)
           }
@@ -39,12 +41,12 @@ const SinglePost = () => {
         )
         relPost.push(p);
       }); 
-      console.log(new Set(relPost))
+      // console.log(new Set(relPost))
     });
     relPost = [...new Set(relPost)]
   }
 
-  
+  // console.log(`http://localhost:8080/${thisPost.img}`)
   if (!thisPost) {
     return "Loading ...";
   } else {
@@ -61,7 +63,7 @@ const SinglePost = () => {
             alt={thisPost.title}
           />
           <div className="singlepost_body">
-            {thisPost.text}
+          <ReactMarkdown>{thisPost.text}</ReactMarkdown>
           </div>
         </div>
 

@@ -26,7 +26,7 @@ const PostContextProvider = ({ children }) => {
           id:p._id,
           teaser: p.teaser,
           title: p.title,
-          img: p.image,
+          img: p.img,
           imagecredit: p.title,
           text: p.text,
           date: p.createdAt,
