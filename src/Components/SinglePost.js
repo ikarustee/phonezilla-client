@@ -4,6 +4,7 @@ import { PostContext } from "../Contexts/PostContext";
 import { readableDate } from "./helper";
 import "./SinglePost.css";
 import ReactMarkdown from 'react-markdown'
+const url = "http://localhost:8080/images/"
 
 const SinglePost = () => {
   const { post } = useContext(PostContext);
@@ -59,7 +60,7 @@ const SinglePost = () => {
           </small>
           <img
             className="singlepost_img"
-            src={thisPost.img}
+            src={`${url}/${thisPost.img}`}
             alt={thisPost.title}
           />
           <div className="singlepost_body">
