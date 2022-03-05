@@ -29,7 +29,7 @@ const PostContextProvider = ({ children }) => {
           img: p.img,
           imagecredit: p.title,
           text: p.text,
-          date: p.createdAt,
+          createdAt: p.createdAt,
           tags: p.tags
         };
       });
