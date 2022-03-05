@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Card, Button } from "antd";
 import ReactMarkdown from 'react-markdown'
+const url = "http://localhost:8080/images/"
 
 const CardPost = ({p}) => {
   const excerpt = Object.values(p.text)
@@ -13,7 +14,7 @@ const CardPost = ({p}) => {
         className="card"
         key={p.id} 
         hoverable
-        cover={<img src={p.img} alt="here" width="400" className="card__cover__img"/>}
+        cover={<img src={`${url}/${p.img}`} alt="here" width="400" className="card__cover__img"/>}
         >
         <span className="card__body teaser">{p.teaser}</span>
         <span className="card__body title">{p.title}</span>
