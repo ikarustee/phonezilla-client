@@ -1,48 +1,31 @@
-import React, { useState, useEffect} from "react"
-import client from "../Components/client"
+import React, { useState, useEffect } from "react";
 
-export const getHeros = () => {
-
-  return client.getEntries({
-    content_type: "hero",
-    order: "-sys.createdAt"
-  });
-};
-  
 const Hero = () => {
-    const [heroScene, setHeroScene] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+  const [heroScene, setHeroScene] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const URL = "http://localhost:8080/hero";
 
-    useEffect(() => {
+  const url = "http://localhost:8080/images";
 
-      const getHeroScenes = async () => {
-        try {
-          const res = await getHeros()
-          const items = res.items
-          const slides = items.map((h) => {
-            return {
-              ...h,
-              image: h?.fields?.heroimage?.fields.file.url,
-              heading: h?.fields?.title
-            }
-          })
-          setHeroScene(slides[0])
-          console.log(slides)
-        } catch (err) {
-          console.log(err)
-        }};
-        getHeroScenes() 
-      } 
-      , []);
-      
-      useEffect(() => {
-        if(heroScene?.image) return setIsLoading(false);
-        console.log(heroScene.image)
-      }, [heroScene]);
-    
+  useEffect(() => {
+    async function hero() {
+      try {
+        const response = await fetch(URL);
+        const jsonData = await response.json();
+        setHeroScene(jsonData[0]);
+        console.log(jsonData[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    hero();
+
+    if (heroScene?.img) return setIsLoading(false);
+  }, [heroScene]);
+
   return (
-    <header className="hero" style={{marginBottom: '1em'}}>
-      <img src={heroScene.image} alt="" loading="lazy"/>
+    <header className="hero" style={{ marginBottom: "1em" }}>
+      <img src={`${url}/${heroScene.img}`} alt="" loading="lazy" />
       <h2 className="hero__heading">{heroScene.heading}</h2>
     </header>
   );
